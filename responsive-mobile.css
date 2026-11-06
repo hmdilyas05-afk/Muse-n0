@@ -1,0 +1,223 @@
+/* ==========================================================================
+   MUSE NUMÉRIQUE — MODULE RESPONSIVE SMARTPHONE & TABLETTE
+   Fichier indépendant : responsive-mobile.css
+   Garde la maquette Desktop intacte et adapte automatiquement les 60+ pages.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. REGLES SMARTPHONES (jusqu'à 767px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+
+  /* ---------- Table de travail & Conteneur principal ---------- */
+  body {
+    background: var(--papier) !important; /* Transition douce pour éviter les marges grises */
+    overflow-x: hidden;
+  }
+
+  .barre {
+    padding-inline: 16px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .barre .etat, .barre .aide {
+    display: none; /* Simplification de l'interface d'en-tête sur mobile */
+  }
+
+  #book {
+    padding: 12px 8px 32px 8px !important;
+    gap: 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .zoom {
+    zoom: 1 !important; /* Désactivation du zoom fixe pour la fluidité native */
+    width: 100% !important;
+    gap: 16px !important;
+  }
+
+  /* ---------- Transforme les doubles pages en conteneurs uniques ---------- */
+  .spread {
+    flex-direction: column !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    gap: 16px !important;
+  }
+
+  .spread .vide {
+    display: none !important; /* Masque les pages vides de calage */
+  }
+
+  /* ---------- Adaptation fluide des pages A5 ---------- */
+  .m-page {
+    width: 100% !important;
+    height: auto !important; /* Déblocage de la hauteur fixe pour défilement naturel */
+    min-height: auto !important;
+    padding: 20px 16px 40px 16px !important;
+    box-shadow: 0 1px 4px rgba(58, 51, 43, 0.12) !important;
+    border-radius: 4px;
+    overflow: visible !important;
+  }
+
+  .m-page.gauche, 
+  .m-page.droite {
+    padding: 20px 16px 40px 16px !important;
+    box-shadow: 0 1px 4px rgba(58, 51, 43, 0.12) !important;
+  }
+
+  /* ---------- Typographie adaptative ---------- */
+  .m-titre {
+    font-size: 24px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .m-titre.long {
+    font-size: 20px !important;
+  }
+
+  .m-chapo {
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+  }
+
+  /* ---------- Flux de texte (.flow) et Colonnes ---------- */
+  .flow {
+    height: auto !important; /* Annulation des hauteurs .flow-h-* imposées */
+    overflow: visible !important;
+    column-count: 1 !important; /* Passation en colonne unique sur mobile */
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+    text-align: left !important; /* Meilleur confort de lecture sur petit écran */
+  }
+
+  .flow.c2 {
+    column-count: 1 !important;
+    column-gap: 0 !important;
+  }
+
+  .flow p {
+    text-indent: 0 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .flow .lettrine::first-letter {
+    font-size: 38px !important;
+    line-height: 0.9 !important;
+    padding-right: 6px !important;
+  }
+
+  /* ---------- Images, Figures et Médias ---------- */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: auto !important; /* Évite les déformations */
+  }
+
+  figure, 
+  figure.flottant, 
+  figure.pubf, 
+  figure.calli, 
+  figure.fig-droite-44mm, 
+  figure.fig-droite-46mm {
+    float: none !important;
+    width: 100% !important;
+    margin: 16px 0 !important;
+  }
+
+  .m-page img[class*="img-"] {
+    height: auto !important;
+    max-height: 350px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* ---------- Ouvertures de Rubriques (.ouv-rub) ---------- */
+  .m-page.ouv-rub {
+    flex-direction: column !important;
+    padding: 0 !important;
+  }
+
+  .ouv-rub .ouv-photo {
+    flex: none !important;
+    width: 100% !important;
+    height: 220px !important;
+  }
+
+  .ouv-rub .ouv-texte {
+    padding: 20px 16px 36px 16px !important;
+  }
+
+  .ouv-titre {
+    font-size: 24px !important;
+  }
+
+  /* ---------- Composants Éditoriaux (Encadrés, Exergues, Grilles) ---------- */
+  .m-exergue {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    margin: 20px 0 !important;
+    padding: 12px !important;
+  }
+
+  .m-encadre {
+    margin: 16px 0 !important;
+    padding: 14px !important;
+  }
+
+  .couv .appels,
+  .vous .temoins,
+  .branches .grille {
+    grid-template-columns: 1fr !important; /* Passage en 1 colonne pour les grilles multi-cartes */
+    gap: 16px !important;
+  }
+
+  .membre {
+    grid-template-columns: 44px 1fr !important;
+  }
+
+  .portrait {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 18px !important;
+  }
+
+  /* ---------- Folio & Pied de page ---------- */
+  .m-folio {
+    position: relative !important;
+    bottom: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    text-align: center !important;
+    margin-top: 24px !important;
+    padding-top: 12px !important;
+    border-top: 0.5pt solid var(--filet);
+  }
+
+  /* ---------- Pages Spéciales (Couverture, 4e de couv) ---------- */
+  .couv .nom {
+    font-size: 42px !important;
+  }
+
+  .quatre .nom {
+    font-size: 32px !important;
+    margin-top: 16px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. REGLES TABLETTES (de 768px à 1023px)
+   -------------------------------------------------------------------------- */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  #book {
+    padding-inline: 8px;
+  }
+  
+  /* Ajustement proportionnel du zoom sur tablette pour conserver la double page */
+  .zoom {
+    zoom: 0.75 !important;
+  }
+}
