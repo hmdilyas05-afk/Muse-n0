@@ -207,17 +207,168 @@
     margin-top: 16px !important;
   }
 }
+/* ==========================================================================
+   MODULE DE PAGINATION SÉQUENTIELLE POUR SMARTPHONES (< 767px)
+   ========================================================================== */
+@media screen and (max-width: 767px) {
 
-/* --------------------------------------------------------------------------
-   2. REGLES TABLETTES (de 768px à 1023px)
-   -------------------------------------------------------------------------- */
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  #book {
-    padding-inline: 8px;
+  /* Nettoyage global du conteneur et suppression des espacements de table */
+  body {
+    background: var(--papier, #fbf8f1) !important;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
   }
-  
-  /* Ajustement proportionnel du zoom sur tablette pour conserver la double page */
+
+  #book {
+    padding: 0 !important;
+    gap: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
   .zoom {
-    zoom: 0.75 !important;
+    zoom: 1 !important;
+    width: 100% !important;
+    gap: 0 !important;
+  }
+
+  .spread {
+    flex-direction: column !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .spread .vide {
+    display: none !important;
+  }
+
+  /* Masquage par défaut de toutes les pages */
+  #book .m-page {
+    display: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    background: var(--papier, #fbf8f1) !important;
+  }
+
+  /* Affichage de la page active sans effet de bordure/cadre en haut ou en bas */
+  #book .m-page.active {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    margin: 0 !important;
+    /* Padding bas important (90px) pour éviter que le texte ne soit masqué par la barre fixe */
+    padding: 16px 16px 90px 16px !important;
+    box-shadow: none !important;
+    border: none !important;
+    box-sizing: border-box !important;
+  }
+
+  .m-page.gauche, 
+  .m-page.droite {
+    padding: 16px 16px 90px 16px !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* ---------- Typographie et flux adaptatifs ---------- */
+  .m-titre {
+    font-size: 24px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .flow {
+    height: auto !important;
+    overflow: visible !important;
+    column-count: 1 !important;
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+    text-align: left !important;
+  }
+
+  .flow.c2 {
+    column-count: 1 !important;
+    column-gap: 0 !important;
+  }
+
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Folio discret en bas de page active */
+  .m-folio {
+    position: relative !important;
+    bottom: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    text-align: center !important;
+    margin-top: 24px !important;
+    padding-top: 12px !important;
+    border-top: 0.5pt solid var(--filet);
+  }
+
+  /* ---------- Barre de navigation fixe en bas ---------- */
+  #mobile-nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--papier, #fbf8f1);
+    border-top: 1px solid var(--filet, #e2d9c9);
+    padding: 10px 16px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom, 10px));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -4px 12px rgba(58, 51, 43, 0.08);
+    z-index: 9999;
+    box-sizing: border-box;
+  }
+
+  #mobile-nav-bar button {
+    font: 600 13px/1 var(--font-texte, sans-serif);
+    background: var(--emeraude, #0f5c46);
+    color: var(--creme, #f6efe1);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 14px;
+    min-height: 44px;
+    min-width: 44px;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+  }
+
+  #mobile-nav-bar button:disabled {
+    background: var(--filet, #e2d9c9);
+    color: var(--encre-douce, #5e544a);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  #mobile-nav-counter {
+    font: 600 14px/1 var(--font-titre, serif);
+    color: var(--encre, #1f1a14);
+    letter-spacing: 0.05em;
+    text-align: center;
+    flex: 1;
+    padding: 0 8px;
+  }
+}
+
+/* Masquage de la barre mobile sur tablettes et ordinateurs */
+@media screen and (min-width: 768px) {
+  #mobile-nav-bar {
+    display: none !important;
   }
 }
