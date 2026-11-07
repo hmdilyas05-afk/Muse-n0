@@ -440,3 +440,69 @@
     z-index: 1;
   }
 }
+
+@media screen and (max-width: 767px) {
+  /* 1. Correction des images et figures (Pages 15, 58, 60) pour qu'elles ne soient pas coupées */
+  #book .m-page img.img-04-decor-page-15-encart-col,
+  #book .m-page img.img-31-laffiche-du-film-la-voix {
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+
+  #book .m-page img.img-30-decor-page-58-calli {
+    width: 60% !important;
+    max-width: 200px !important;
+    margin: 0 auto 12px auto !important;
+    display: block !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  #book .m-page figure {
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  #book .m-page img {
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+
+  /* 2. Suppression des superpositions de texte et images (Pages 29, 44, 51) */
+  #book .m-page .flow figure,
+  #book .m-page .flow figure.flottant,
+  #book .m-page .flow figure.pubf,
+  #book .m-page .flow figure.calli,
+  #book .m-page .flow figure.fig-droite-44mm,
+  #book .m-page .flow figure.fig-droite-46mm {
+    float: none !important;
+    width: 100% !important;
+    margin: 16px 0 !important;
+    clear: both !important;
+    display: block !important;
+  }
+
+  #book .m-page .flow {
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  #book .m-page .flow p {
+    clear: both !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* 3. CONSERVATION DES COULEURS D'ORIGINE POUR LES PAGES SPÉCIALES (ex: 4e de couv .quatre) */
+  #book .m-page.active {
+    background: var(--papier, #fbf8f1) !important; /* Par défaut couleur papier */
+  }
+
+  /* Si la page possède la classe .quatre ou .couv, on rétablit son fond d'origine et la couleur de son texte */
+  #book .m-page.quatre.active {
+    background: var(--brun-profond, #4a3a2c) !important;
+    color: var(--creme, #f6efe1) !important;
+  }
+}
