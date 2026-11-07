@@ -372,3 +372,71 @@
     display: none !important;
   }
 }
+
+@media screen and (max-width: 767px) {
+  /* Correction spécifique pour que les illustrations et photos des pages 15, 58 et 60 s'affichent entièrement */
+  
+  /* Page 15 : Encart décoratif / illustration */
+  #book .m-page img.img-04-decor-page-15-encart-col {
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+
+  /* Page 58 : Calligraphie (Iqra) */
+  #book .m-page img.img-30-decor-page-58-calli {
+    width: 60% !important;
+    max-width: 200px !important;
+    margin: 0 auto 12px auto !important;
+    display: block !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  /* Page 60 : Affiche du film Hind Rajab */
+  #book .m-page img.img-31-laffiche-du-film-la-voix {
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+
+  /* Règle générale de sécurité pour toutes les figures et images sur mobile */
+  #book .m-page figure {
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  #book .m-page img {
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* Annulation totale des flottements et superpositions pour toutes les figures et images sur mobile */
+  #book .m-page .flow figure,
+  #book .m-page .flow figure.flottant,
+  #book .m-page .flow figure.pubf,
+  #book .m-page .flow figure.calli,
+  #book .m-page .flow figure.fig-droite-44mm,
+  #book .m-page .flow figure.fig-droite-46mm {
+    float: none !important;
+    width: 100% !important;
+    margin: 16px 0 !important;
+    clear: both !important;
+    display: block !important;
+  }
+
+  /* S'assure que le texte s'écoule proprement au-dessus et en dessous de l'image, sans chevauchement */
+  #book .m-page .flow {
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  #book .m-page .flow p {
+    clear: both !important;
+    position: relative;
+    z-index: 1;
+  }
+}
